@@ -9,13 +9,23 @@
 </template>
 
 <script>
-    const comIndex = {
-        active: 0,
-    };
     export default {
         name: "TabBar",
         data() {
-            return comIndex
+            return {
+                active: 0,
+            };
+        },
+        props:{
+            index:{
+                type:Number,
+                default(){
+                    return 0
+                }
+            }
+        },
+        created() {
+            this.active = this.index
         }
     }
 </script>

@@ -13,8 +13,8 @@ module.exports = {
     },
     devServer: {
         open: true,
-        host: 'localhost', // 允许外部ip访问
-        // host:'192.168.3.244',
+        // host: 'localhost', // 允许外部ip访问
+        host:'192.168.3.244',
         port: 8080, // 端口
         https: false, // 启用https
         proxy:{

@@ -6,7 +6,7 @@
             <product-info :productInfo="productInfo"></product-info>
             <product-params :productInfo="productInfo"></product-params>
         </div>
-        <product-goods></product-goods>
+        <product-goods :productInfo="productInfo"></product-goods>
     </div>
 </template>
 

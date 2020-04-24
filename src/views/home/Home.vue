@@ -3,7 +3,7 @@
         <home-nav-bar></home-nav-bar>
         <home-main :producuList="producuList" @scroll.native="scroll" ref="main"></home-main>
         <home-go-top @click.native="GoTop" v-show="isTop"></home-go-top>
-        <tab-bar></tab-bar>
+        <tab-bar :index="0"></tab-bar>
     </div>
 </template>
 
@@ -42,10 +42,7 @@
             scroll() {
                 this.mainDom = this.$refs.main.$el
                 this.mainDom.scrollTop > 1500 ? this.isTop = true : this.isTop = false
-                if (this.page > this.totalPages){
-                    this.$toast("没有更多数据了")
-                    return;
-                };
+
                 if (this.isPullUpFlag){
                     return
                 };
@@ -56,7 +53,11 @@
                 //console.log(mainDom.scrollTop);
                 //滚动的总距离
                 //console.log(mainDom.scrollHeight);
-                if (this.mainDom.clientHeight + this.mainDom.scrollTop >= this.mainDom.scrollHeight - 1) {
+                if (this.mainDom.clientHeight + this.mainDom.scrollTop >= this.mainDom.scrollHeight) {
+                    if (this.page >= this.totalPages){
+                        this.$toast("没有更多数据了")
+                        return;
+                    };
                     this.page++
                     this.getProducuList(this.page)
                 }
